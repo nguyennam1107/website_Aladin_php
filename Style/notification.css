@@ -1,0 +1,28 @@
+.notification-bar {
+    background-color: #ffffff;
+    color: #000;
+    padding: 10px 0;
+    text-align: center;
+    display:none; 
+}
+
+.notification-item {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.notification-item a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.close-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    font-size: 20px;
+    color: #000;
+}
