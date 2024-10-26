@@ -1,6 +1,6 @@
 <?php
-include_once '../models/Product.php';
-include_once '../config/database.php';
+include_once './models/Product.php';
+include_once './config/database.php';
 
 class ProductController {  
     public function listProducts() {  

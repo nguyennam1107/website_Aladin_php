@@ -1,3 +1,11 @@
+<?php  
+include_once '../config/database.php';  
+include_once '../controllers/LoginController.php';  
+
+$database = new Database();  
+$db = $database->getConnection();  
+$controller = new LoginController($db);  
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +20,7 @@
     <div class="container" >
         <div class="login-box">
             <div class="login-form">
-                <form id="signInForm">
+                <form id="signInForm" method="POST">
                     <h2>Sign In</h2>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
@@ -25,8 +33,7 @@
                     <button type="submit" class="btn btn-primary">Sign In</button>
                     <p class="switch-link">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
                 </form>
-    
-                <form id="signUpForm" style="display: none;">
+                <form id="signUpForm" method="POST" style="display: none;">
                     <h2>Sign Up</h2>
                     <div class="mb-3">
                         <label for="newUsername" class="form-label">Username</label>
@@ -52,3 +59,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php  
+if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+    $username = $_POST['username'] ?? null;  
+    $password = $_POST['password'] ?? null;  
+    $newUsername = $_POST['newUsername'] ?? null;  
+    $newPassword = $_POST['newPassword'] ?? null;  
+    $comfirmPassword = $_POST['comfirmPassword'] ?? null;  
+    if (!empty($newUsername) && !empty($newPassword) && !empty($comfirmPassword)) {  
+        if ($newPassword !== $comfirmPassword) {  
+            echo "Mật khẩu phải giống nhau!";  
+            exit();  
+        }  
+
+        if ($controller->signup($newUsername, $newPassword)) {  
+            echo "Đăng ký thành công!";  
+            header("Location: trangchu.php");  
+            exit();
+        } else {  
+            echo "Đăng ký thất bại!";  
+        }  
+    }  
+
+    if (!empty($username) && !empty($password)) {  
+        if ($controller->login($username, $password)) {  
+            echo "Đăng nhập thành công!";  
+            header("Location: trangchu.php");  
+            exit();
+        } else {  
+            echo "Tên đăng nhập hoặc mật khẩu không đúng!";  
+        }  
+    }  
+} else {  
+    include 'login.php';
+}  
+?>

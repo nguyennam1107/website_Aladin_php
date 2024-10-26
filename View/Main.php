@@ -31,7 +31,6 @@
  </div> 
     <?php  
     require_once '../controllers/ProductController.php';  
-
     $productController = new ProductController();  
     $products = $productController->listProducts();   
     ?>  
