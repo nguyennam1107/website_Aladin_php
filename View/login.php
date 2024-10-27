@@ -1,10 +1,7 @@
 <?php  
-include_once '../config/database.php';  
 include_once '../controllers/LoginController.php';  
 
-$database = new Database();  
-$db = $database->getConnection();  
-$controller = new LoginController($db);  
+$controller = new LoginController();  
 ?> 
 <!DOCTYPE html>
 <html lang="en">
