@@ -2,7 +2,7 @@
 class DanhMuc {
     private $conn;
     private $table = 'danh_muc';
-
+    
     public $id;
     public $category;
     public $item_name;

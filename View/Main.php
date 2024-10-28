@@ -1,8 +1,14 @@
+<?php  
+    require_once '../controllers/ProductController.php';  
+    $productController = new ProductController();  
+    $products = $productController->listProducts();   
+?> 
 <html lang="vi">  
 <head>  
  <meta charset="UTF-8">  
  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
  <title>Adidas Showcase</title>  
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
  <link rel="stylesheet" href="../Style/main.css">
@@ -28,12 +34,7 @@
             </div>  
         </div>  
     </div>  
- </div> 
-    <?php  
-    require_once '../controllers/ProductController.php';  
-    $productController = new ProductController();  
-    $products = $productController->listProducts();   
-    ?>  
+ </div>
  <?php if (!empty($products)): ?>  
     <div class="exclusive-section">  
         <div class="wrap">  
