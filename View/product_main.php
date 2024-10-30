@@ -1,3 +1,22 @@
+<?php  
+ini_set('display_errors', 1);  
+ini_set('display_startup_errors', 1);  
+error_reporting(E_ALL);   
+require_once '../controllers/ProductController.php'; 
+require_once '../controllers/ControlDanhMuc.php'; 
+    $productController = new ProductController();
+    $controlDanhMuc = new ControlDanhMuc();
+    $products = $productController->listProducts();     
+    if (isset($_GET['id'])) {  
+        $product_id = intval($_GET['id']); 
+        echo "<script>console.log('".$product_id."');</script>";  
+    } else {  
+        echo "<script>console.log('khong co san pham nao duoc cung cap');</script>";  
+    }   
+    $product_data=$productController->getProductById($product_id);
+    $categoryData= $controlDanhMuc->getCategoriesByID($product_data['category_id']);  
+if ($product_data) {  
+?> 
 <!DOCTYPE html>  
 <html lang="vi">  
 <head>  
@@ -10,7 +29,7 @@
     <link rel="stylesheet" href="../Style/product.css">  
 </head>  
 <body>  
-<nav class="navbar navbar-light bg-light">  
+<nav class="navbar navbar-light bg-light" >  
     <span>EXPLORE OUR KEY ICONS - <a href="#">KHÁM PHÁ ORIGINALS</a></span>  
     <i class="fa-solid fa-xmark"></i>  
 </nav>  
@@ -20,10 +39,10 @@
         <div class="col-xl-8">  
             <div class="mb-3">  
                 <ul class="breadcrumb">  
-                    <li class="breadcrumb-item"><a href="trangchu.php"><i class="fa-solid fa-arrow-left"></i> Trở lại</a></li>  
-                    <li class="breadcrumb-item"><a href="trangchu.php">Trang chủ</a></li>  
-                    <li class="breadcrumb-item"><a href="trangchu.php">Original</a></li>  
-                    <li class="breadcrumb-item"><a href="trangchu.php">Giày</a></li>  
+                    <li class="breadcrumb-item"><a href="./trangchu.php"><i class="fa-solid fa-arrow-left"></i> Trở lại</a></li>  
+                    <li class="breadcrumb-item"><a href="./trangchu.php">Trang chủ</a></li>  
+                    <li class="breadcrumb-item"><a href="./trangchu.php">Original</a></li>  
+                    <li class="breadcrumb-item"><a href="./trangchu.php">Giày</a></li>  
                 </ul>  
             </div>  
             <div class="card">  
@@ -31,18 +50,18 @@
                     <h1>ĐÔI GIÀY PHONG CÁCH GOLF HỢP TÁC THIẾT KẾ CÙNG BAPE, CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.</h1>  
                     <div class="row">  
                         <div class="col-md-6">  
-                            <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2e86d2d18f224468bf21a5ae627d144c_9366/Giay_Golf_BAPE_x_adidas_Stan_Smith_trang_IG5916_01_standard.jpg" alt="Sản phẩm" class="product-image">  
+                            <img src="<?php $product_data["image_url"]?>" alt="Sản phẩm" class="product-image">  
                         </div>  
                         <div class="col-md-6">  
-                            <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7477b277ec6647919fa241a78609964a_9366/Giay_Alphaboost_V1_mau_xanh_la_IG3129_01_standard.jpg" alt="Sản phẩm" class="product-image">  
+                            <img src="<?php $product_data["image_url"]?>" alt="Sản phẩm" class="product-image">  
                         </div>  
                     </div>  
                     <div class="row">  
                         <div class="col-md-6">  
-                            <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2e86d2d18f224468bf21a5ae627d144c_9366/Giay_Golf_BAPE_x_adidas_Stan_Smith_trang_IG5916_01_standard.jpg" alt="Sản phẩm" class="thumbnail">  
+                            <img src="<?php $product_data["image_url"]?>" alt="Sản phẩm" class="thumbnail">  
                         </div>  
                         <div class="col-md-6">  
-                            <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/7477b277ec6647919fa241a78609964a_9366/Giay_Alphaboost_V1_mau_xanh_la_IG3129_01_standard.jpg" alt="Sản phẩm" class="thumbnail">  
+                            <img src="<?php $product_data["image_url"]?>" alt="Sản phẩm" class="thumbnail">  
                         </div>  
                     </div>  
                 </div>  
@@ -73,34 +92,37 @@
                         <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/2e86d2d18f224468bf21a5ae627d144c_9366/Giay_Golf_BAPE_x_adidas_Stan_Smith_trang_IG5916_01_standard.jpg" alt="" class="img-fluid" />  
                         <p>3.200.000<sup>đ</sup></p>  
                         <p>Giày BAPE x adidas Stan Smith</p>  
-                    </div>  
-                    <!-- Thêm các sản phẩm khác nếu cần -->  
+                    </div> 
                 </div>  
             </div>  
         </div>  
-
         <div class="col-xl-4 sidebar">  
-            <h4>Nữ • Chạy</h4>  
-            <h1>ÁO KHOÁC NEW YORK CITY</h1>  
-            <p>3.500.000₫</p>  
-            <p>Better Scarlet / Semi Flash Aqua / App Solar Red</p>  
-            <h5>MỞ TRUY CẬP SỚM</h5>  
-            <p>Hiện chỉ mở bán cho hội viên adiClub. Tham gia miễn phí và khám phá tính hoa của adidas.</p>  
-            <h5>Kích cỡ</h5>  
-            <div class="btn-group" role="group" aria-label="Basic example">  
-                <button type="button" class="btn btn-outline-secondary">A/XS</button>  
-                <button type="button" class="btn btn-outline-secondary">A/S</button>  
-                <button type="button" class="btn btn-outline-secondary">A/M</button>  
-                <button type="button" class="btn btn-outline-secondary">A/L</button>  
-                <button type="button" class="btn btn-outline-secondary">A/XL</button>  
-            </div>  
-            <div class="mt-3">  
-                <a href="#" class="btn btn-primary">ĐĂNG KÝ MIỄN PHÍ</a>  
-            </div>  
-            <div class="mt-3">  
-                <p>Bạn đã là hội viên adiClub? <a href="#">ĐĂNG NHẬP</a></p>  
-            </div> 
+        <h4><?php echo $categoryData['gender']."•".$categoryData['category']; ?></h4> 
+        <h1><?php echo $product_data['name']; ?></h1>  
+        <p><?php echo number_format($product_data['price'], 0, ',', '.') . '₫'; ?></p>  
+        <p><?php echo $product_data['description']; ?></p>  
+        <h5>MỞ TRUY CẬP SỚM</h5>  
+        <p>Hiện chỉ mở bán cho hội viên adiClub. Tham gia miễn phí và khám phá tính hoa của adidas.</p>  
+        <h5>Kích cỡ</h5>  
+        <div class="btn-group" role="group" aria-label="Basic example">  
+            <button type="button" class="btn btn-outline-secondary">A/XS</button>  
+            <button type="button" class="btn btn-outline-secondary">A/S</button>  
+            <button type="button" class="btn btn-outline-secondary">A/M</button>  
+            <button type="button" class="btn btn-outline-secondary">A/L</button>  
+            <button type="button" class="btn btn-outline-secondary">A/XL</button>  
         </div>  
+        <div class="mt-3">  
+            <a href="#" class="btn btn-primary">ĐĂNG KÝ MIỄN PHÍ</a>  
+        </div>  
+        <div class="mt-3">  
+            <p>Bạn đã là hội viên adiClub? <a href="#">ĐĂNG NHẬP</a></p>  
+        </div>   
+    </div>  
+    <?php  
+    }else {  
+        echo "Sản phẩm không tồn tại.";  
+    }  
+    ?>  
     </div>  
 </div>  
 

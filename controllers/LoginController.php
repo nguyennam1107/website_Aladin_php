@@ -8,7 +8,7 @@ class LoginController {
 
     public function __construct() {  
         $database = new Database();  
-        $this->db = $database->connect();  
+        $db = $database->connect();  
         $this->user = new User($this->db);
     }  
 
@@ -19,22 +19,22 @@ class LoginController {
     public function signup($username, $password) {  
         return $this->user->create($username, $password);  
     }  
-    public function handleSignup($newUsername, $newPassword, $controller) {  
-        if ($controller->signup($newUsername, $newPassword)) {  
-            echo "Đăng ký thành công!";  
+    public function handleSignup($newUsername, $newPassword) {  
+        if ($this->signup($newUsername, $newPassword)) {    
+            echo "<script>console.log('Debug here login');</script>";  
             header("Location: ../View/trangchu.php");  
             exit();  
         } else {  
-            echo "Đăng ký thất bại!";   
+            echo "<script>console.log('Debug here login 1');</script>";  
         }  
     }  
-    public function handleLogin($username, $password, $controller) {  
-        if ($controller->loginController($username, $password)) {  
-            echo "Đăng nhập thành công!";  
+    public function handleLogin($username, $password) {  
+        if ($this->loginController($username, $password)) {  
+            echo "<script>console.log('Debug here sign up');</script>";  
             header("Location: ../View/trangchu.php");  
             exit();  
         } else {  
-            echo "Tên đăng nhập hoặc mật khẩu không đúng!";  
+            echo "<script>console.log('Debug here sign up 1');</script>";  
         }  
     }  
 

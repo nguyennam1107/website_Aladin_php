@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALADIN | Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Style/admin_dashboards.css" type="text/css" media="all" />
+</head>
+<body>
+    
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="text-center py-4">
+                <img src="../images/ALADIN.png" alt="Logo" class="img-fluid">
+            </div>
+            <ul class="nav flex-column">
+                <!-- Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin_dashboard.php">
+                        <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                    </a>
+                </li>
+
+                <!-- Revenue Management -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#revenueMenu" role="button" aria-expanded="false" aria-controls="revenueMenu">
+                        <i class="fas fa-money-check-dollar mr-2"></i> Revenue Management
+                    </a>
+                    <div class="collapse" id="revenueMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-dollar-sign mr-2"></i> Income</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-check-circle mr-2"></i> Approve</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Manage Products -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#productMenu" role="button" aria-expanded="false" aria-controls="productMenu">
+                        <i class="fas fa-box-open mr-2"></i> Manage Products
+                    </a>
+                    <div class="collapse" id="productMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-plus mr-2"></i> Add Product</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-list mr-2"></i> List Product</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Female (example category) -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#femaleMenu" role="button" aria-expanded="false" aria-controls="femaleMenu">
+                        <i class="fas fa-female mr-2"></i> 
+                    </a>
+                    <div class="collapse" id="femaleMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-tshirt mr-2"></i> Fashion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-shoe-prints mr-2"></i> Shoes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#femaleMenu" role="button" aria-expanded="false" aria-controls="femaleMenu">
+                        <i class="fas fa-female mr-2"></i> Nam
+                    </a>
+                    <div class="collapse" id="femaleMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-tshirt mr-2"></i> Fashion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-shoe-prints mr-2"></i> Shoes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#femaleMenu" role="button" aria-expanded="false" aria-controls="femaleMenu">
+                        <i class="fas fa-female mr-2"></i> Female
+                    </a>
+                    <div class="collapse" id="femaleMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-tshirt mr-2"></i> Fashion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-shoe-prints mr-2"></i> Shoes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#femaleMenu" role="button" aria-expanded="false" aria-controls="femaleMenu">
+                        <i class="fas fa-female mr-2"></i> Female
+                    </a>
+                    <div class="collapse" id="femaleMenu">
+                        <ul class="nav flex-column pl-4">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-tshirt mr-2"></i> Fashion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link"><i class="fas fa-shoe-prints mr-2"></i> Shoes</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./admin_dashboard.php">
+                        <i class="fas fa-tachometer-alt mr-2"></i> Cai Dat
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="content-header text-center mb-5">
+                <h1 class="font-weight-semi-bold text-uppercase mb-3">Manager &amp; Statistics</h1>
+                <p><a href="#">ALADIN-Shop</a> - The ALADIN platform offers streamlined management and statistics functionalities for effective business operations.</p>
+            </div>
+            <div class="bieudo">
+                <img src="./images/hoa1.jpg" alt="Chart">
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

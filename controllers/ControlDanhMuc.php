@@ -28,5 +28,11 @@ class ControlDanhMuc {
         return $categories;
         
     }
+    public function getCategoriesByID($ID) {
+        $this->danhMucModel->id = $ID;
+        $result = $this->danhMucModel->readByCategorybyID($ID);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row;
+    }
 }
 ?>

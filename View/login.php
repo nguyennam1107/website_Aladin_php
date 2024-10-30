@@ -18,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();  
         }  
         
-        handleSignup($newUsername, $newPassword, $controller);  
+        $controller->handleSignup($newUsername, $newPassword);  
     }   
     if (!empty($username) && !empty($password)) {  
-        handleLogin($username, $password, $controller);  
+        $controller->handleLogin($username, $password);  
     }  
-}  
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

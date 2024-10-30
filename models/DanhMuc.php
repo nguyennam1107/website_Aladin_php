@@ -25,5 +25,12 @@ class DanhMuc {
         $stmt->execute();
         return $stmt;
     }
+    public function readByCategorybyID($category_id) {  
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :category_id LIMIT 1";  
+        $stmt = $this->conn->prepare($query);  
+        $stmt->bindParam(':category_id', $category_id);  
+        $stmt->execute();  
+        return $stmt;  
+    }  
 }
 ?>

@@ -1,4 +1,7 @@
 <?php  
+    ini_set('display_errors', 1);  
+    ini_set('display_startup_errors', 1);  
+    error_reporting(E_ALL);    
     require_once '../controllers/ProductController.php';  
     $productController = new ProductController();  
     $products = $productController->listProducts();   
@@ -42,7 +45,7 @@
                 <div class="product-card">  
                     <p>Members' Exclusive</p>  
                 </div>  
-                <a href="Infoproduct/Info.php?id=<?php echo $product['id']; ?>">  
+                <a href="./product.php?id=<?php echo intval($product['id']); ?>">  
                     <div class="image-item">  
                         <img src="<?php echo $product['image']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" />  
                         <div class="image-overlay">  
