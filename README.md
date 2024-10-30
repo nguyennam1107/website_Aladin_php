@@ -7,7 +7,7 @@ Aladin là một website bán quần áo và giày online. Dự án sử dụng 
 1. Cài đặt XAMPP và khởi động máy chủ Apache và MySQL.
 2. Tải dự án và giải nén vào thư mục `htdocs` trong thư mục cài đặt XAMPP.
 3. Tạo cơ sở dữ liệu MySQL và nhập các bảng cần thiết từ tệp SQL (nếu có).
-4. Truy cập vào địa chỉ `http://localhost/<tên_thư_mục_dự_án>` trong trình duyệt để chạy dự án.
+4. Truy cập vào địa chỉ `http://localhost/Aladin` trong trình duyệt để chạy dự án.
 
 ## Hướng Dẫn Sử Dụng
 1. Đăng nhập hoặc đăng ký tài khoản để bắt đầu mua sắm.
