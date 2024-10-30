@@ -2,7 +2,7 @@
 class DanhMuc {
     private $conn;
     private $table = 'danh_muc';
-
+    
     public $id;
     public $category;
     public $item_name;
@@ -25,5 +25,12 @@ class DanhMuc {
         $stmt->execute();
         return $stmt;
     }
+    public function readByCategorybyID($category_id) {  
+        $query = "SELECT * FROM " . $this->table . " WHERE id = :category_id LIMIT 1";  
+        $stmt = $this->conn->prepare($query);  
+        $stmt->bindParam(':category_id', $category_id);  
+        $stmt->execute();  
+        return $stmt;  
+    }  
 }
 ?>

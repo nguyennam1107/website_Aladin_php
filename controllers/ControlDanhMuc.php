@@ -17,9 +17,7 @@ class ControlDanhMuc {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $categories[] = $row;
         }
-        include '../Views/Navbar.php';
         return $categories;
-        echo "Categories";
     }
     public function getAllCategories() {
         $result = $this->danhMucModel->read();
@@ -27,9 +25,14 @@ class ControlDanhMuc {
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $categories[] = $row;
         }
-        include '../Views/Navbar.php';
         return $categories;
         
+    }
+    public function getCategoriesByID($ID) {
+        $this->danhMucModel->id = $ID;
+        $result = $this->danhMucModel->readByCategorybyID($ID);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row;
     }
 }
 ?>

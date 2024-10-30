@@ -1,0 +1,22 @@
+.image-slider {  
+    display: flex;  
+    overflow-x: auto;  
+}  
+.image-item {  
+    margin-right: 15px;  
+    width: 200px;  
+}  
+.product-image {  
+    width: 100%;  
+    height: auto;  
+}  
+.thumbnail {  
+    width: 100%;  
+    height: auto;  
+    margin-bottom: 15px;  
+}  
+.sidebar {  
+    background-color: #f8f9fa;  
+    padding: 20px;  
+    border-radius: 5px;  
+}  

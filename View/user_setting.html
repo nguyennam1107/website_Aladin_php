@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Style/user_settings.css" >
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-5">Admin Settings</h1>
+
+    <!-- Profile Settings -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-user-circle"></i> Profile Settings
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-lock"></i> Change Password
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+                </div>
+                <button type="submit" class="btn btn-warning">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- System Settings -->
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-cog"></i> System Settings
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="language">Language</label>
+                    <select class="form-control" id="language">
+                        <option value="en">English</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timezone">Timezone</label>
+                    <select class="form-control" id="timezone">
+                        <option value="UTC+7">UTC+7 (Vietnam)</option>
+                        <option value="UTC">UTC</option>
+                        <option value="UTC+1">UTC+1 (Central Europe)</option>
+                        <!-- Add more timezones as needed -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
