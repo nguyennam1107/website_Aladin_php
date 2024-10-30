@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('#encryptionMethod').change(function() {
-        // Ẩn tất cả các phần nhập key trước
         $('#affineKeyInput, #caesarKeyInput, #cipherMapKeyInput, #vigenereKeyInput, #playfairKeyInput, #hillKeyInput2x2, #hillKeyInput3x3').hide();
 
         const method = $(this).val();

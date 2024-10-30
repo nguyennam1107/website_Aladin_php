@@ -3,8 +3,8 @@ class Ma_hoa {
     private $conn; 
 
 
-    public function __construct($db_connection) {
-        $this->conn = $db_connection; 
+    public function __construct($db) {
+        $this->conn = $db;
     }
 
     public function updateKey($method, $keyString, $keyAction) {
@@ -23,6 +23,18 @@ class Ma_hoa {
         return false;
         
     }
+    public function getKeysWithActionOne() {  
+        $sql = "SELECT method, `key` FROM Ma_hoa WHERE key_action = 1";  
+        $stmt = $this->conn->prepare($sql);  
+        $stmt->execute();  
+    
+        $methods = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        if (empty($methods)) {  
+            $methods[] = ["method" => "No keys found with keyAction = 1.", "key" => ""];  
+        }  
+        
+        return $methods;  
+    }  
     
     function getEncryptionMethods() {
         $sql = "SELECT method, `key` FROM Ma_hoa";

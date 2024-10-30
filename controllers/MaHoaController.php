@@ -17,5 +17,8 @@ class MaHoaController {
     public function getEncryptionMethods() {
         return $this->maHoa->getEncryptionMethods($this->db);
     }
+    public function getKeysWithActionOne() {
+        return $this->maHoa->getKeysWithActionOne($this->db);
+    }
 }
 ?>
