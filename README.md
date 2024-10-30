@@ -1,4 +1,4 @@
-# Aladin - Website Bán Quần Áo Giày Online
+# Aladin - Website Bán Quần Áo Giày Online ![Logo Aladin](image/ALADIN.png)
 
 ## Mô Tả
 Aladin là một website bán quần áo và giày online. Dự án sử dụng frontend bằng HTML, Bootstrap, JavaScript và CSS, trong khi backend được phát triển bằng PHP. Cơ sở dữ liệu của dự án sử dụng MySQL.
