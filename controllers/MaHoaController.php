@@ -23,5 +23,8 @@ class MaHoaController {
     public function saveAction($method, $keyAction) {
         $this->maHoa->save_key_action($method, $keyAction);
     }
+    public function getKeyById($id) {
+        return $this->maHoa->getKeyById($id);
+    }
 }
 ?>

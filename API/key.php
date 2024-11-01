@@ -1,12 +1,16 @@
 <?php  
-    error_reporting(E_ALL);  
-    ini_set('display_errors', 1);  
+include_once '../controllers/MaHoaController.php';  
+$controller = new MaHoaController();  
 
-    include_once '../controllers/MaHoaController.php';  
-    $controller = new MaHoaController();  
-    $keys = $controller->getKeysWithActionOne();  
+if (isset($_GET['id'])) {  
+    $id = $_GET['id'];  
+    $key = $controller->getKeyById($id);  
     
     header('Content-Type: application/json');  
-    echo json_encode($keys); 
-    echo "<script>console.log('".$keys."');</script>"; 
-?> 
+    echo json_encode($key);  
+} else {  
+    $keys = $controller->getKeysWithActionOne();  
+    header('Content-Type: application/json');  
+    echo json_encode($keys);   
+}  
+?>  

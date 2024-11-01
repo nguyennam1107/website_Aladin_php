@@ -30,7 +30,6 @@ function stringToMatrix(str, n) {
 function hillCipherEncrypt(plaintext, key) {  
     const n = key.length; 
     const keyMatrix = key.map(row => row.slice()); 
-
     const filteredChars = [];
     const caseInfo = [];
 
@@ -40,7 +39,6 @@ function hillCipherEncrypt(plaintext, key) {
             caseInfo.push(char);
         }
     }
-
     const plaintextMatrix = stringToMatrix(filteredChars.join(''), n);  
 
     const encryptedMatrix = plaintextMatrix.map(plaintextRow =>   
@@ -52,8 +50,5 @@ function hillCipherEncrypt(plaintext, key) {
         return caseInfo[index] && caseInfo[index] === caseInfo[index].toLowerCase() 
             ? encryptedChar.toLowerCase(): encryptedChar;
     }).join('');
-
     return encryptedText;  
 }
-
-// Example usage:

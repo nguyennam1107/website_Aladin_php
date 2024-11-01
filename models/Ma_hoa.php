@@ -44,10 +44,16 @@ class Ma_hoa {
         if (empty($methods)) {  
             $methods[] = ["method" => "No keys found with keyAction = 1.", "key" => ""];  
         }  
-        
         return $methods;  
     }  
+    public function getKeysWithId($id) {  
+        $sql = "SELECT method, `key` FROM Ma_hoa WHERE id = ".$_id."";  
+        $stmt = $this->conn->prepare($sql);  
+        $stmt->execute();  
     
+        $methods = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $methods;  
+    }  
     function getEncryptionMethods() {
         $sql = "SELECT * FROM Ma_hoa";
         $stmt = $this->conn->prepare($sql);
@@ -63,3 +69,4 @@ class Ma_hoa {
     
 }
 ?>
+

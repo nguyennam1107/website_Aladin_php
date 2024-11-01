@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Mật khẩu phải giống nhau!";  
             exit();  
         }  
-        
         $controller->handleSignup($newUsername, $newPassword);  
     }   
     

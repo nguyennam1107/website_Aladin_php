@@ -24,7 +24,7 @@ class LoginController {
         echo "<script>console.log('Debug here login');</script>";  
         echo "<script>console.log('".$username."');</script>";
         echo "<script>console.log('".$password."');</script>";  
-        return $this->user->create($username, $password);  
+        return $this->user->create($username, $password,0,9);  
     }  
     public function handleSignup($newUsername, $newPassword) {  
         if ($this->signup($newUsername, $newPassword)) {    
@@ -33,15 +33,24 @@ class LoginController {
             exit();  
         } else {  
             echo "<script>console.log('Debug here login 1');</script>";  
+            echo "<script>alert('Đăng ký không thành công. Vui lòng kiểm tra lại thông tin.');</script>";
+            header("Location:../View/login.php");
         }  
     }  
     public function handleLogin($username, $password) {  
         if ($this->loginController($username, $password)) {  
             echo "<script>console.log('Debug here sign up');</script>";  
+            if ($this->getAdminWithUsername($username)) {
+                header("Location:../View/admin_dashboard.php");  
+                exit();
+            }
             header("Location: ../View/trangchu.php");  
             exit();  
         } else {  
             echo "<script>console.log('Debug here sign up 1');</script>";  
+            echo "<script>alert('Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.');</script>";  
+            header("Location: ../View/login.php");  
+            exit();  
         }  
     }  
 

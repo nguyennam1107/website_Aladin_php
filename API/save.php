@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mahoaController->saveAction($method['method'], 0);  
             }  
         }  
-
         echo "Lưu lựa chọn phương thức '$selectedMethod' thành công!";  
         header("Location: ../View/admin_setting.php");
         exit();
