@@ -23,6 +23,18 @@ class Ma_hoa {
         return false;
         
     }
+    public function save_key_action($method, $keyAction) {  
+        $sql = "UPDATE Ma_hoa SET key_action = :keyAction WHERE method = :method";  
+        $stmt = $this->conn->prepare($sql);  
+
+        $stmt->bindValue(':method', $method, PDO::PARAM_STR);  
+        $stmt->bindValue(':keyAction', $keyAction, PDO::PARAM_INT);  
+        
+        if ($stmt->execute()) {  
+            return true;  
+        }  
+        return false;  
+    }  
     public function getKeysWithActionOne() {  
         $sql = "SELECT method, `key` FROM Ma_hoa WHERE key_action = 1";  
         $stmt = $this->conn->prepare($sql);  
@@ -37,7 +49,7 @@ class Ma_hoa {
     }  
     
     function getEncryptionMethods() {
-        $sql = "SELECT method, `key` FROM Ma_hoa";
+        $sql = "SELECT * FROM Ma_hoa";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
     

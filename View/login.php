@@ -1,36 +1,3 @@
- <?php  
- ini_set('display_errors', 1);
- ini_set('display_startup_errors', 1);
- error_reporting(E_ALL);
-include_once '../controllers/LoginController.php';  
-$controller = new LoginController();  
-if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-    var_dump($_POST);
-
-    $username = $_POST['username'] ?? '';  
-    $password = $_POST['password'] ?? '';  
-    $newUsername = $_POST['newUsername'] ?? '';  
-    $newPassword = $_POST['newPassword'] ?? '';  
-    $comfirmPassword = $_POST['comfirmPassword'] ?? '';  
-    
-    function passwordMatch($newPassword, $comfirmPassword) {  
-        return $newPassword === $comfirmPassword;  
-    }  
-    
-    if (!empty($newUsername) && !empty($newPassword) && !empty($comfirmPassword)) {  
-        if (!passwordMatch($newPassword, $comfirmPassword)) {  
-            echo "Mật khẩu phải giống nhau!";  
-            exit();  
-        }  
-        
-        $controller->handleSignup($newUsername, $newPassword);  
-    }   
-    
-    if (!empty($username) && !empty($password)) {  
-        $controller->handleLogin($username, $password);  
-    }  
-}   
-?>  
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
@@ -46,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">  
         <div class="login-box">  
             <div class="login-form">  
-                <form id="signInForm" method="POST">  
+                <form id="signInForm" method="POST" action="../API/login.php">  
                     <h2>Sign In</h2>  
                     <div class="mb-3">  
                         <label for="username" class="form-label">Username</label>  
@@ -60,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p class="switch-link">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>  
                 </form>  
 
-                <form id="signUpForm" method="POST" style="display: none;">  
+                <form id="signUpForm" method="POST" action="../API/login.php" style="display: none;">  
                     <h2>Sign Up</h2>  
                     <div class="mb-3">  
                         <label for="newUsername" class="form-label">Username</label>  
@@ -92,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 alert("Mật khẩu không hợp lệ. Vui lòng thử lại.");  
                 return;  
             }  
-
-            $.getJSON('http://localhost/Aladin/API/key.php', function(key) {  
+            console.log('debug here');
+            $.getJSON('../API/key.php', function(key) {  
             try {  
                 if (!key || !key[0] || !key[0].key) {  
                     throw new Error("Dữ liệu khóa không hợp lệ.");  
@@ -109,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     [key_exists[3], key_exists[4], key_exists[5]],  
                     [key_exists[6], key_exists[7], key_exists[8]]  
                 ];  
-
                 const encryptedPassword = hillCipherEncrypt(newPassword, keyMatrix);   
                 $('#newPassword').val(encryptedPassword);   
                 $('#comfirmPassword').val(encryptedPassword);  
@@ -121,7 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }).fail(function() {  
             alert("Có lỗi xảy ra khi lấy khóa. Vui lòng thử lại sau.");  
         });
-
         });  
         
         $('#signInForm').submit(function(e) {  
@@ -133,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 return;  
             }  
 
-            $.getJSON('http://localhost/Aladin/API/key.php', function(key) {  
+            $.getJSON('../API/key.php', function(key) {  
             try {  
                 if (!key || !key[0] || !key[0].key) {  
                     throw new Error("Dữ liệu khóa không hợp lệ.");  

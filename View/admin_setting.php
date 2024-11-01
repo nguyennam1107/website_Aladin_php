@@ -1,14 +1,11 @@
-<?php
-ini_set('display_errors', 1);  
-ini_set('display_startup_errors', 1);  
-error_reporting(E_ALL);     
+<?php  
 require_once '../controllers/MaHoaController.php';
 $mahoaController = new MaHoaController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $method = $_POST['encryptionMethod'];
-    $keyAction = 1;
-
+    $keyAction = 0;
+    
     switch ($method) {
         case 'affine':
             $keys = [
@@ -46,7 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         default:
             $keys = [];
     }
-    $mahoaController->saveKey($method, $keys, $keyAction);
+
+    if (empty($keys)) {
+        echo "Please fill out all required fields.";
+        return;
+    }
+    echo "<script>console.log('".json_encode($keys)."');</script>"; 
+    $mahoaController->saveKey($method, json_encode($keys), $keyAction);
 }
 ?>
 <!DOCTYPE html>
@@ -155,16 +158,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="card-header">
             <h5>Saved Encryption Methods</h5>
         </div>
-        <div class="card-body">
-            <ul class="list-group">
-                <?php
-                   $methods = $mahoaController->getEncryptionMethods();
-                   foreach ($methods as $method) {
-                    echo "<li class='list-group-item'>" . htmlspecialchars($method["method"]) . ": " . htmlspecialchars($method["key"]) . "</li>";
-                }
-                ?>
-            </ul>
-        </div>
+        <div class="card-body">  
+        <form method="post" action="../API/save.php">  
+            <ul class="list-group">  
+                <?php  
+                $methods = $mahoaController->getEncryptionMethods();  
+                foreach ($methods as $method) {  
+                    $checked = (int)$method["key_action"] === 1 ? "checked" : "";
+                    echo "<script>console.log('".$checked."');</script>"; 
+                    echo "<li class='list-group-item'>".  
+                        "<label>".  
+                        "<input type='radio' name='selected_method' value='" . htmlspecialchars($method["method"]) . "'".$checked."> " .   
+                        htmlspecialchars($method["method"]) . ": " . htmlspecialchars($method["key"]) . 
+                        "</label>  
+                    </li>";  
+                }  
+                ?>  
+            </ul>  
+            <button id="save-button" type="submit">Lưu lựa chọn</button>  
+        </form>  
+        </div>  
     </div>
 </div>
 
