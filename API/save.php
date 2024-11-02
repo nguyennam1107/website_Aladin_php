@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['selected_method'])) {  
         $selectedMethod = htmlspecialchars($_POST['selected_method']);  
-        
 
         $mahoaController->saveAction($selectedMethod, 1);  
 

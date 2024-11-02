@@ -14,15 +14,13 @@ $(document).ready(function() {
         } else if (method === 'playfair') {
             $('#playfairKeyInput').show();
         } else if (method === 'hill') {
-            $('#hillKeyInput2x2').show(); // Mặc định là ma trận 2x2
+            $('#hillKeyInput2x2').show(); 
             $('#switchTo3x3').show();
         }else if (method === 'hill_3x3') {
-            $('#hillKeyInput3x3').show(); // Mặc định là ma trận 2x2
+            $('#hillKeyInput3x3').show();
             $('#switchTo2x2').show();
         }
     });
-
-    // Sự kiện chuyển đổi giữa ma trận 2x2 và 3x3 cho Hill Cipher
     $(document).on('click', '#switchTo3x3', function() {
         $('#hillKeyInput2x2').hide();
         $('#hillKeyInput3x3').show();

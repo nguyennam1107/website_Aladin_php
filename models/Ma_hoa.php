@@ -47,7 +47,7 @@ class Ma_hoa {
         return $methods;  
     }  
     public function getKeysWithId($id) {  
-        $sql = "SELECT method, `key` FROM Ma_hoa WHERE id = ".$_id."";  
+        $sql = "SELECT method, `key` FROM Ma_hoa WHERE id = ".$id."";  
         $stmt = $this->conn->prepare($sql);  
         $stmt->execute();  
     
