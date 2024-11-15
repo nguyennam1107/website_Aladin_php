@@ -7,14 +7,14 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     <link rel="stylesheet" href="../Style/style.css">  
-    <title>Welcome Aladin</title>  
+    <title>Welcome Aladin</title> 
 </head>  
 <body>  
     <div class="container">  
         <div class="login-box">  
             <div class="login-form">
-                <?php include './modulLogin.html'; ?>  
-                <?php include './modulSignup.html'; ?>  
+                <?php include './modul/modulLogin.html'; ?>  
+                <?php include './modul/modulSignup.html'; ?>  
             </div>  
         </div>  
     </div>

@@ -34,6 +34,18 @@ class ProductController {
         }  
         return false;  
     }
-        
+    public function addProduct($name, $price, $image_url, $description, $category_id, $is_new) {  
+        $this->product->name = $name;  
+        $this->product->price = $price;  
+        $this->product->image_url = $image_url;  
+        $this->product->description = $description;  
+        $this->product->category_id = $category_id;  
+        $this->product->is_new = $is_new;  
+
+        if ($this->product->create()) {  
+            return true;
+        }   
+        return false;   
+    }      
 }  
 ?>

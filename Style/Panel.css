@@ -1,0 +1,68 @@
+.panel {
+    background-color: #4a4a4a;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+    display: none; /* Ẩn panel theo mặc định */  
+    position: absolute;  
+    top: 50px; /* Điều chỉnh vị trí theo nhu cầu */  
+    left: 100%; /* Hiển thị bên phải */  
+    width: 200px; /* Chiều rộng của panel */  
+    border: 1px solid #ccc; /* Đường viền cho panel */  
+    background-color: white; /* Màu nền cho panel */    
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Đổ bóng cho panel */  
+    z-index: 1000;
+}
+.panel-header {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.panel-level {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.panel-level img {
+    vertical-align: middle;
+}
+.points {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.link {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.link:hover {
+    background-color: #575757;
+}
+.benefits {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+}
+.benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.benefits li {
+    display: flex;
+    align-items: center;
+}
+.benefits li::before {
+    content: "✔";
+    color: #00ff00;
+    margin-right: 10px;
+}
+.show {  
+    display: block;
+}  

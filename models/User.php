@@ -7,19 +7,19 @@ class User {
         $this->conn = $db;  
     }  
     
-    public function create($username, $password ,$zone,$ma_hoa_id) {
-        if ($this->conn === null) {
-            echo "Kết nối cơ sở dữ liệu không hợp lệ.";
-            return false;
-        }
+    public function create($username, $password, $zone) {  
+        if ($this->conn === null) {  
+            echo "Kết nối cơ sở dữ liệu không hợp lệ.";  
+            return false;  
+        }  
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);  
         
-        $query = "INSERT INTO " . $this->table_name . " (username, password,zone,ma_hoa_id) VALUES (:username, :password,:zone,:ma_hoa_id)";
-        $stmt = $this->conn->prepare($query);
+        $query = "INSERT INTO " . $this->table_name . " (username, password, zone) VALUES (:username, :password, :zone)";  
+        $stmt = $this->conn->prepare($query);  
         
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':zone', $zone);
-        $stmt->bindParam(':ma_hoa_id', $ma_hoa_id);
+        $stmt->bindParam(':username', $username);  
+        $stmt->bindParam(':password', $hashedPassword);  
+        $stmt->bindParam(':zone', $zone);  
     
         return $stmt->execute();  
     }
@@ -29,17 +29,17 @@ class User {
         $stmt = $this->conn->prepare($query);  
         $stmt->bindParam(':username', $username);  
         $stmt->execute();  
-
+    
         if ($stmt->rowCount() == 1) {  
             $user = $stmt->fetch(PDO::FETCH_ASSOC);  
-            if ($password === $user['password']) {  
-                return true;
+            if (password_verify($password, $user['password'])) {  
+                return true;  
             }  
         }  
-        return false;
-    }  
+        return false;  
+    }
     public function getAdminWithUsername($username) {  
-        $query = "SELECT 'zone' FROM " . $this->table_name . " WHERE username = :username";  
+        $query = "SELECT zone FROM " . $this->table_name . " WHERE username = :username";  
         $stmt = $this->conn->prepare($query);  
         $stmt->bindParam(':username', $username);  
         $stmt->execute();  
@@ -52,13 +52,8 @@ class User {
         }  
         return false;   
     }
-    public function getIdMaHoa($username) {
-        $query = "SELECT ma_hoa_id FROM ". $this->table_name. " WHERE username = :username";  
-        $stmt = $this->conn->prepare($query);  
-        $stmt->bindParam(':username', $username);  
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row['ma_hoa_id'];
-     }
+    public function getUserName(){
+        
+    }
 }  
 ?>  

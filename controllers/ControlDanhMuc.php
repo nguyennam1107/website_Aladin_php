@@ -19,15 +19,14 @@ class ControlDanhMuc {
         }
         return $categories;
     }
-    public function getAllCategories() {
-        $result = $this->danhMucModel->read();
-        $categories = [];
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $categories[] = $row;
-        }
-        return $categories;
-        
-    }
+    public function getAllCategories() {  
+        $result = $this->danhMucModel->getAllCategories();  
+        $categories = [];  
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {  
+            $categories[] = $row;  
+        }  
+        return $categories; 
+    }  
     public function getCategoriesByID($ID) {
         $this->danhMucModel->id = $ID;
         $result = $this->danhMucModel->readByCategorybyID($ID);

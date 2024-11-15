@@ -44,5 +44,39 @@ class Product {
             return false;
         }
     }
+    public function update() {  
+        $query = "UPDATE " . $this->table . " SET name = :name, price = :price, image_url = :image_url, description = :description, category_id = :category_id, is_new = :is_new WHERE id = :id";  
+    
+        $stmt = $this->conn->prepare($query);  
+    
+        // Binds  
+        $stmt->bindParam(':name', $this->name);  
+        $stmt->bindParam(':price', $this->price);  
+        $stmt->bindParam(':image_url', $this->image_url);  
+        $stmt->bindParam(':description', $this->description);  
+        $stmt->bindParam(':category_id', $this->category_id);  
+        $stmt->bindParam(':is_new', $this->is_new);  
+        $stmt->bindParam(':id', $this->id); // Bind ID for the update condition  
+    
+        if($stmt->execute()) {  
+            return true;  
+        } else {  
+            return false;  
+        }  
+    }  
+    
+    public function delete() {  
+        $query = "DELETE FROM " . $this->table . " WHERE id = :id";  
+        $stmt = $this->conn->prepare($query);  
+    
+        // Bind ID  
+        $stmt->bindParam(':id', $this->id);  
+    
+        if($stmt->execute()) {  
+            return true;  
+        } else {  
+            return false;  
+        }  
+    }
 }
 ?>

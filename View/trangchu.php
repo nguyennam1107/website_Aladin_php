@@ -8,9 +8,9 @@
     <title>Trang Chu</title>
 </head>
 <body>
-        <?php include './Navbar.php'; ?>  
-        <?php include './Main.php'; ?>  
-        <?php include './Footer.html'; ?> 
+        <?php include './modul/Navbar.php'; ?>  
+        <?php include './modul/Main.php'; ?>  
+        <?php include './modul/Footer.html'; ?> 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>  

@@ -12,12 +12,12 @@ class DanhMuc {
     public function __construct($db) {
         $this->conn = $db;
     }
-    public function read() {
-        $query = "SELECT * FROM " . $this->table;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+    public function getAllCategories() {  
+        $query = "SELECT * FROM ".$this->table."";  
+        $stmt = $this->conn->prepare($query);  
+        $stmt->execute();  
         return $stmt;
-    }
+    }  
     public function readByGender($gender) {
         $query = "SELECT * FROM " . $this->table . " WHERE gender = :gender";
         $stmt = $this->conn->prepare($query);

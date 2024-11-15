@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Style/admin_dashboards.css" type="text/css" media="all" />
+</head>
+<body>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div class="content-header text-center mb-5">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Manager &amp; Statistics</h1>
+            <p><a href="#">ALADIN-Shop</a> - The ALADIN platform offers streamlined management and statistics functionalities for effective business operations.</p>
+        </div>
+        <div class="bieudo">
+            <canvas id="myChart" width="400" height="200"></canvas>  
+        </div>
+    </main>
+    <script>  
+        function createChart(data) {  
+            const labels = data.map(item => item.label); // thay 'label' bằng tên cột trong DB của bạn  
+            const values = data.map(item => item.value); // thay 'value' bằng tên cột bạn muốn hiển thị  
+        
+            const ctx = document.getElementById('myChart').getContext('2d');  
+            const myChart = new Chart(ctx, {  
+                type: 'bar', // Loại biểu đồ (bar, line, pie, v.v.)  
+                data: {  
+                    labels: labels,  
+                    datasets: [{  
+                        label: 'Dữ liệu của tôi',  
+                        data: values,  
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',  
+                        borderColor: 'rgba(75, 192, 192, 1)',  
+                        borderWidth: 1  
+                    }]  
+                },  
+                options: {  
+                    scales: {  
+                        y: {  
+                            beginAtZero: true  
+                        }  
+                    }  
+                }  
+            });  
+        }  
+    </script>  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
